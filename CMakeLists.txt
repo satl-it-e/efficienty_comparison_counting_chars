@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.13)
+project(efficienty_comparison_counting_chars)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(efficienty_comparison_counting_chars test_one_way.cpp test_all_ways.cpp)
