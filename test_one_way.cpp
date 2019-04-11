@@ -40,8 +40,7 @@ int main(int argc, char *argv[]) {
         // Opening files
         if (!in_filename.empty() || !out_filename.empty()){
             // Open file
-            std::ifstream in_file(in_filename);
-            if (in_file.good()) {
+
                 auto start = get_current_time_fenced();
                 switch (method_id) {
                     case 1:
@@ -54,6 +53,7 @@ int main(int argc, char *argv[]) {
                         results = read_entire_file_1(in_filename);
                         break;
                 }
+
                 auto finish = get_current_time_fenced();
 
                 std::ofstream out_file(out_filename, std::ios_base::app);
@@ -69,20 +69,16 @@ int main(int argc, char *argv[]) {
                         out_file << "Word length: " << i << " Number of words: " << results[i] << std::endl;
                     }
 
-                } else{
+                } else {
                     std::cout << "Something gone wrong with output file" << std::endl;
                     return -5;
                 }
 
-
-            } else{
-                std::cout << "Something gone wrong with input file" << std::endl;
-                return -4;
             }
         }
 
 
-    }
+
 
 
     return 0;

@@ -8,11 +8,18 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
-int* read_by_separate_words(const std::string &in_file);
 
-int* read_entire_file_2(const std::string &in_file);
+// Reading by separate words
+int* read_by_separate_words(std::string& in_filename);
 
-int* read_entire_file_1(const std::string &in_file);
+
+// Read entire file (two copies)
+int* read_entire_file_2(std::string& in_filename);
+
+
+// Read entire file (one copy)
+int* read_entire_file_1(std::string& in_filename);
 
 #endif //EFFICIENTY_COMPARISON_COUNTING_CHARS_WORDS_LENGTH_H
