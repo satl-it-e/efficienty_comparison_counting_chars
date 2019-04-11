@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
                         results = read_by_separate_words(in_filename);
                         break;
                     case 2:
-                        results = read_entire_file_2(in_filename);
+                        results = read_entire_file_boost(in_filename);
                         break;
                     case 3:
                         results = read_entire_file_1(in_filename);
