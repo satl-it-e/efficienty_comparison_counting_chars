@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/efficienty_comparison_counting_chars.dir/main.cpp.o CMakeFiles/efficienty_comparison_counting_chars.dir/test_all_ways.cpp.o  -o efficienty_comparison_counting_chars 

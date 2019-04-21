@@ -6,11 +6,10 @@
 #include "words_length.h"
 
 
-
 // Reading by separate words
 int* read_by_separate_words(std::string& in_filename){
     std::ifstream in_file(in_filename);
-    static int words_length[256] = {0};
+    static int words_length[31] = {0};
     std::string word;
 
     if (in_file.good()){
@@ -26,23 +25,6 @@ int* read_by_separate_words(std::string& in_filename){
     return words_length;
 }
 
-//
-//template <typename CharT, typename Traits,
-//        typename Allocator = std::allocator<CharT>>
-//auto read_stream_into_string(
-//        std::basic_istream<CharT, Traits>& in,
-//        Allocator alloc = {})
-//{
-//    std::basic_ostringstream<CharT, Traits, Allocator>
-//            ss(std::basic_string<CharT, Traits, Allocator>(
-//            std::move(alloc)));
-//
-//    if (!(ss << in.rdbuf())){
-//            throw std::ios_base::failure{"error"};
-//    }
-//
-//    return ss.str();
-//}
 
 auto read_entire_file(std::string& in_filename){
     std::ifstream in_file(in_filename);
@@ -52,16 +34,15 @@ auto read_entire_file(std::string& in_filename){
     return ss.str();
 }
 
-// Read entire file (two copies)
-int* read_entire_file_boost(std::string& in_filename){
-    std::ifstream in_file(in_filename);
 
-    static int words_length[256] = {0};
+// Reading entire file to memory and spliting with boost library
+int* read_entire_file_boost(std::string& in_filename){
+    static int words_length[31] = {0};
     std::string file = read_entire_file(in_filename);
 
 
     std::vector<std::string> SplitVec; // #2: Search for tokens
-    split( SplitVec, file, is_any_of(" ,.;:?!()'\t\n"), token_compress_on ); // SplitVec == { "hello abc","ABC","aBc goodbye" }
+    split( SplitVec, file, is_any_of(" ,.;:?!()\t\n"), token_compress_on );
 
     for (const std::string &word: SplitVec){
         words_length[word.length()] += 1;
@@ -70,10 +51,26 @@ int* read_entire_file_boost(std::string& in_filename){
 }
 
 
-// Read entire file (one copy)
-int* read_entire_file_1(std::string& in_filename){
-    std::ifstream in_file(in_filename);
-    static int words_length[256] = {0};
-    in_file.close();
+bool my_isalpha(char ch){
+    return ((((int) 'a' <= (int) ch) && ((int) 'z' >= (int) ch)) ||
+            (((int) 'A' <= (int) ch) && ((int) 'Z' >= (int) ch)));
+}
+
+// Reading entire file to memory and determining length with isalpha
+int* read_entire_file_isalpha(std::string& in_filename){
+    static int words_length[31] = {0};
+    std::string file = read_entire_file(in_filename);
+
+    int length = 0;
+    for (char some_letter: file){
+        if (my_isalpha(some_letter)){
+            length++;
+        } else{
+            if (length > 0){
+                words_length[length]++;
+            }
+            length = 0;
+        }
+    }
     return words_length;
 }

@@ -11,20 +11,24 @@
 #include <iostream>
 #include <boost/algorithm/string.hpp>
 #include <vector>
+#include <algorithm>
+#include <ctype.h>
 
 using namespace boost;
 
 
-// Reading by separate words
 int* read_by_separate_words(std::string& in_filename);
+
 
 auto read_entire_file(std::string& in_filename);
 
-// Read entire file (two copies)
+
 int* read_entire_file_boost(std::string& in_filename);
 
 
-// Read entire file (one copy)
-int* read_entire_file_1(std::string& in_filename);
+bool my_isalpha(char ch);
+
+
+int* read_entire_file_isalpha(std::string& in_filename);
 
 #endif //EFFICIENTY_COMPARISON_COUNTING_CHARS_WORDS_LENGTH_H

@@ -8,7 +8,7 @@
 
 
 int main(int argc, char *argv[]) {
-    int method_id;
+    int method_id, max_word_length = 31;
     std::string in_filename, out_filename;
 
     if (argc < 4){
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
                         results = read_entire_file_boost(in_filename);
                         break;
                     case 3:
-                        results = read_entire_file_1(in_filename);
+                        results = read_entire_file_isalpha(in_filename);
                         break;
                 }
 
@@ -59,13 +59,17 @@ int main(int argc, char *argv[]) {
                 std::ofstream out_file(out_filename, std::ios_base::app);
                 if (out_file.good()){
                     int mean = 0, number_of_words = 0;
-                    for(int i = 1; i < 256; i++){
+                    for(int i = 1; i < max_word_length; i++){
                         number_of_words += results[i];
                         mean += i * results[i];
                     }
                     out_file << "Total time of processing: " << to_us(finish - start) << std::endl;
-                    out_file << "Average word length: " << mean / number_of_words << std::endl;
-                    for(int i = 1; i < 256; i++){
+                    if (number_of_words > 0){
+                        out_file << "Average word length: " << mean / number_of_words << std::endl;
+                    } else{
+                        out_file << "Average word length: " << 0 << std::endl;
+                    }
+                    for(int i = 1; i < max_word_length; i++){
                         out_file << "Word length: " << i << " Number of words: " << results[i] << std::endl;
                     }
 
@@ -76,10 +80,6 @@ int main(int argc, char *argv[]) {
 
             }
         }
-
-
-
-
 
     return 0;
 }

@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 3.5.1)
+cmake_minimum_required(VERSION 3.5.2)
 project(efficienty_comparison_counting_chars)
 
 set(CMAKE_CXX_STANDARD 14)
+
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ../)
 
 add_executable(test_one_way words_length.cpp test_one_way.cpp)
 
