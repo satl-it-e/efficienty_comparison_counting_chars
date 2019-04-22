@@ -43,3 +43,5 @@ Run test: <br />
 Method ID | 1 | 2 | 3
 --- | --- | --- | ---
 **Time of processing (microseconds):** |238996 | 882145 | 102726
+
+![picture alt](https://github.com/satl-it-e/efficienty_comparison_counting_letters/blob/master/result_bar.png)

@@ -83,7 +83,7 @@ def main(number_of_tests):
                  ' | '.join(list(map(str, min_times)))))
 
     results = {i + 1: time for i, time in enumerate(min_times)}
-    plot_bar(results, average_times[0])
+    # plot_bar(results, average_times[0])
 
 
 if __name__ == "__main__":
