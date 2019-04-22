@@ -63,16 +63,15 @@ int main(int argc, char *argv[]) {
                         number_of_words += results[i];
                         mean += i * results[i];
                     }
-                    out_file << "Total time of processing: " << to_us(finish - start) << std::endl;
+                    std::cout << "Total time of processing: " << to_us(finish - start) << std::endl;
                     if (number_of_words > 0){
                         out_file << "Average word length: " << mean / number_of_words << std::endl;
                     } else{
                         out_file << "Average word length: " << 0 << std::endl;
                     }
-                    for(int i = 1; i < max_word_length; i++){
+                    for (int i = 1; i < max_word_length; i++) {
                         out_file << "Word length: " << i << " Number of words: " << results[i] << std::endl;
                     }
-
                 } else {
                     std::cout << "Something gone wrong with output file" << std::endl;
                     return -5;

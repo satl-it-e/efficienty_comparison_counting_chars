@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.2)
-project(efficienty_comparison_counting_chars)
+project(counting_letters)
 
 set(CMAKE_CXX_STANDARD 14)
 
